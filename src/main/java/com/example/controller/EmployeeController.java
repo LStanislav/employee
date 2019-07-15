@@ -12,8 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -84,7 +83,7 @@ public class EmployeeController {
     }
 
     @RequestMapping(value = "/{id}/requests", method = RequestMethod.GET)
-    public String requestsByEmployee(@PathVariable long id, ModelMap model) {
+    public String requestsByEmployee(@PathVariable long id, ModelMap model, Principal principal) {
         LOGGER.info("EmployeeController#requestsByEmployee");
 
         final List<Request> requests = employeeService.findRequestsByEmployee(id);
